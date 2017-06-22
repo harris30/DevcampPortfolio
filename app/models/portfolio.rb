@@ -1,4 +1,6 @@
-class Portfolio < ApplicationRecord
+class Portfolio < ApplicationRecord\
+    has_many :technologies
+    include Placeholder
     def self.angular
         where(subtitle: 'Angular')
     end
