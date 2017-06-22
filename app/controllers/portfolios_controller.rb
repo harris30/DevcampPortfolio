@@ -4,8 +4,11 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   # GET /portfolios.json
   def index
-    @portfolios = Portfolio.all
-  end
+    @portfolio_items = Portfolio.all
+  end 
+  
+  def angular
+    @angular_portfolio_items = Portfolio.angular
 
   # GET /portfolios/1
   # GET /portfolios/1.json
@@ -19,7 +22,6 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1/edit
   def edit
-  end
 
   # POST /portfolios
   # POST /portfolios.json
