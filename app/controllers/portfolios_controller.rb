@@ -9,6 +9,7 @@ class PortfoliosController < ApplicationController
   
   def angular
     @angular_portfolio_items = Portfolio.angular
+  end
 
   # GET /portfolios/1
   # GET /portfolios/1.json
@@ -17,7 +18,8 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/new
   def new
-    @portfolio = Portfolio.new
+    @portfolio_item = Portfolio.new
+    3.times { @portfolio_item.technologies.build }
   end
 
   # GET /portfolios/1/edit
@@ -25,8 +27,9 @@ class PortfoliosController < ApplicationController
 
   # POST /portfolios
   # POST /portfolios.json
+  end
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
 
     respond_to do |format|
       if @portfolio.save
@@ -38,7 +41,7 @@ class PortfoliosController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /portfolios/1
   # PATCH/PUT /portfolios/1.json
   def update
@@ -73,4 +76,5 @@ class PortfoliosController < ApplicationController
     def portfolio_params
       params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image)
     end
-end
+
+ 
