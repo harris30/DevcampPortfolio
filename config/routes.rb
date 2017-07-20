@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/about'
-
-  get 'pages/contact'
-
-  resources :users
-  resources :skills
+  devise_for :users
   resources :portfolios, except: [:show]
   get 'angular-items', to: 'portfolios#angular'
   get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'

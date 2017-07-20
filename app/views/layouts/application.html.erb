@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
     <%= yield %>
+    
+    <% if session[:source] %>
+      <p>Thanks for visiting me from <%= session[:source] %></p>
+    <% end %>
   </body>
 </html>
